@@ -1,0 +1,40 @@
+library(readr)
+
+file_path <- "C:\Users\abhin\OneDrive\Desktop\intel.csv"
+
+# Read the CSV file into a data frame
+intel_data <- read_csv(file_path)
+
+head(intel_data)
+
+summary(intel_data)
+
+intel_data$Cores <- as.numeric(intel_data$Cores)
+intel_data$Max Turbo Speed <- as.numeric(sub(" GHz", "", intel_data$Max Turbo Speed))
+intel_data$Base Speed <- as.numeric(sub(" GHz", "", intel_data$Base Speed))
+
+str(intel_data)
+
+library(ggplot2)
+
+file_path <- ""C:\Users\abhin\OneDrive\Desktop\intel.csv""  
+data <- read.csv(file_path)
+
+data$Max_Turbo_Speed <- as.numeric(gsub(" GHz", "", data$Max.Turbo.Speed))
+data$Cores <- as.numeric(data$Cores)
+
+data_cleaned <- na.omit(data.frame(Cores = data$Cores, Max_Turbo_Speed = data$Max_Turbo_Speed))
+
+ggplot(data_cleaned, aes(x = Cores, y = Max_Turbo_Speed)) +
+  geom_point(color = "blue", alpha = 0.7) +
+  labs(
+    title = "Scatter Plot: Cores vs Max Turbo Speed",
+    x = "Cores",
+    y = "Max Turbo Speed (GHz)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12)
+  )
