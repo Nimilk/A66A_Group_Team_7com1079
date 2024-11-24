@@ -1,4 +1,4 @@
-Github Hode for plotting the scattered graph based on the graph.
+Github code for plotting the scattered graph based on the graph.
 
 library(ggplot2)
 
