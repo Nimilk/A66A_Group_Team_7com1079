@@ -1,0 +1,28 @@
+# Load necessary library
+# Install the package if it's not installed
+# install.packages("readr")
+
+library(readr)
+
+# Define the file path (update this to the correct path on your system)
+file_path <- "path/to/your/intel.csv"
+
+# Read the CSV file into a data frame
+intel_data <- read_csv(file_path)
+
+# Display the first few rows of the data
+head(intel_data)
+
+# Summary of the data
+summary(intel_data)
+
+# Checking the modified data
+str(intel_data)
+
+#Plot the relationship between Cores and Cache Size
+# Install ggplot2 package if you don't have it
+# install.packages("ggplot2")
+
+library(ggplot2)
+
+ggplot(intel_data, aes(x = Cores, y = 'Cache Size')) + geom_point() +labs(title = "Cores vs Cache Size", x = "Cores", y = "Cache Size (MB)")
