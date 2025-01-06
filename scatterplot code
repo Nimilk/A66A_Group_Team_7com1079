@@ -1,0 +1,2 @@
+r studio code for scatter plot of cores vs Max Turbo Speed 
+ggplot(intel_data, aes(x = Cores, y = Max.Turbo.Speed )) + geom_point(color = "blue", size = 3) + labs(title = "Cores vs Max Turbo Speed",x = "Number of Cores",y = "Max Turbo Speed (GHz)") +theme_minimal()
