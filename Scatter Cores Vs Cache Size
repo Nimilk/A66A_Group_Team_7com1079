@@ -1,0 +1,2 @@
+Scatterplot code for Cores Vs Cache Size
+>ggplot(intel_data, aes(x = Cores, y = `Cache Size` )) +geom_point(color = "blue", size = 3) +theme_minimal() +labs(title = "Scatterplot of Cores vs Cache Size", x = "Number of Cores", y = "Cache Size")
