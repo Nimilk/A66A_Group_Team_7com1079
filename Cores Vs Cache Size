@@ -1,0 +1,2 @@
+I've uploaded ggplot of Cores vs Cache Size
+ ggplot(intel_data,aes(x = Cores,y = 'Cache Size'))+geom_point()+labs(title = "Cores vs Cache Size ",x = "Cores",y = "Cache Size (MB)")
