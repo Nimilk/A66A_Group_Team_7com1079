@@ -1,0 +1,60 @@
+> library(readr)
+intel_data <-read_csv("C:/Users/asgorath/Documents/GitHub/A66A_Group_Team_7com1079/intel.csv")
+Rows: 1619 Columns: 7                                                         
+── Column specification ──────────────────────────────────────────────────────
+Delimiter: ","
+chr (6): Processor, Status, Release Date, Max Turbo Speed, Base Speed, Cac...
+dbl (1): Cores
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+> head(intel_data)
+# A tibble: 6 × 7
+  Processor         Status `Release Date` Cores `Max Turbo Speed` `Base Speed`
+  <chr>             <chr>  <chr>          <dbl> <chr>             <chr>       
+1 Intel Core i9-99… Launc… Q4'18             18 4.40 GHz          3.00 GHz    
+2 Intel Core i9-99… Launc… Q4'18             16 4.40 GHz          3.10 GHz    
+3 Intel Core i9-99… Launc… Q4'18             14 4.40 GHz          3.30 GHz    
+4 Intel Core i9-99… Launc… Q4'18             12 4.40 GHz          3.50 GHz    
+5 Intel Core i9-99… Launc… Q4'18             10 4.40 GHz          3.50 GHz    
+6 Intel Core i9-98… Launc… Q4'18             10 4.10 GHz          3.30 GHz    
+# ℹ 1 more variable: `Cache Size` <chr>
+> summary(intel_data)
+  Processor            Status          Release Date           Cores       
+ Length:1619        Length:1619        Length:1619        Min.   : 1.000  
+ Class :character   Class :character   Class :character   1st Qu.: 2.000  
+ Mode  :character   Mode  :character   Mode  :character   Median : 4.000  
+                                                          Mean   : 5.442  
+                                                          3rd Qu.: 6.000  
+                                                          Max.   :56.000  
+ Max Turbo Speed     Base Speed         Cache Size       
+ Length:1619        Length:1619        Length:1619       
+ Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character  
+                                                         
+                                                         
+                                                         
+> intel_data$`Max Turbo Speed` <-as.numeric(sub("GHz","",intel_data$`Max Turbo Speed`))
+> str(intel_data)
+spc_tbl_ [1,619 × 7] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ Processor      : chr [1:1619] "Intel Core i9-9980XE Extreme Edition Processor" "Intel Core i9-9960X X-series Processor" "Intel Core i9-9940X X-series Processor" "Intel Core i9-9920X X-series Processor" ...
+ $ Status         : chr [1:1619] "Launched" "Launched" "Launched" "Launched" ...
+ $ Release Date   : chr [1:1619] "Q4'18" "Q4'18" "Q4'18" "Q4'18" ...
+ $ Cores          : num [1:1619] 18 16 14 12 10 10 8 18 16 14 ...
+ $ Max Turbo Speed: num [1:1619] 4.4 4.4 4.4 4.4 4.4 4.1 4.4 4.2 4.2 4.3 ...
+ $ Base Speed     : chr [1:1619] "3.00 GHz" "3.10 GHz" "3.30 GHz" "3.50 GHz" ...
+ $ Cache Size     : chr [1:1619] "24.75 MB" "22 MB" "19.25 MB" "19.25 MB" ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   Processor = col_character(),
+  ..   Status = col_character(),
+  ..   `Release Date` = col_character(),
+  ..   Cores = col_double(),
+  ..   `Max Turbo Speed` = col_character(),
+  ..   `Base Speed` = col_character(),
+  ..   `Cache Size` = col_character()
+  .. )
+ - attr(*, "problems")=<externalptr> 
+install.packages("ggplot2")
+library(ggplot2)
+> ggplot(intel_data,aes(x = Cores,y = `Max Turbo Speed`))+geom_point()+labs(title = "Cores vs Max Turbo Speed",x = "Cores",y = "Max Turbo Speed (GHz)")
